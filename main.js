@@ -45,19 +45,17 @@ app.post("/make-fetch", async (req, res) => {
     Cookie: aliyungf_tc=ca58e39959ea41c18df09aed477bbc7b93c3af6dc0814212af16429b5bc69b7b
   `;
 
-  (async () => {
-    const response = await fetch("https://api.geodoge.com/api/order/speedup", {
-      method: "POST",
-      headers: headers,
-      body:
-        "orderid=" +
-        Math.floor(Math.random() * (1181788 - 1131788 + 1)) +
-        1131788,
-    });
-    const body = await response.text();
-    console.log(body);
-    res.json(body);
-  })();
+  fetch("https://api.geodoge.com/api/order/speedup", {
+    method: "POST",
+    headers: headers,
+    body:
+      "orderid=" +
+      Math.floor(Math.random() * (1181788 - 1131788 + 1)) +
+      1131788,
+  });
+  const body = await response.text();
+  console.log(body);
+  res.json(body);
 });
 
 app.listen(process.env.PORT || 3000, () => {
