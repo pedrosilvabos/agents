@@ -52,10 +52,10 @@ app.post("/make-fetch", async (req, res) => {
       "orderid=" +
       Math.floor(Math.random() * (1181788 - 1131788 + 1)) +
       1131788,
-  });
-  const body = await response.text();
-  console.log(body);
-  res.json(body);
+  })
+    .then((response) => response.text())
+    .then((result) => res.send(result))
+    .catch((error) => console.log("error", error));
 });
 
 app.listen(process.env.PORT || 3000, () => {
