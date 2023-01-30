@@ -7,6 +7,20 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.post("/", (req, res) => {
+  var requestOptions = {
+    method: "POST",
+    redirect: "follow",
+  };
+
+  fetch(
+    "https://6377e0d25c4777651228d687.mockapi.io/stuff/users",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => res.send(result))
+    .catch((error) => console.log("error", error));
+}); //app.post
 app.post("/make-fetch", async (req, res) => {
   const headers = `
     Host: api.geodoge.com
