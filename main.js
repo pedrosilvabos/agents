@@ -26,7 +26,8 @@ app.post("/", (req, res) => {
     .then((result) => res.send(result))
     .catch((error) => console.log("error", error));
 }); //app.post
-app.post("/make-fetch", async (req, res) => {
+app.post("/make-fetch/:orderId", async (req, res) => {
+  const { orderId } = req.params;
   fetch("https://api.geodoge.com/api/order/speedup", {
     method: "POST",
     headers: {
@@ -54,10 +55,7 @@ app.post("/make-fetch", async (req, res) => {
       Cookie:
         "aliyungf_tc=ca58e39959ea41c18df09aed477bbc7b93c3af6dc0814212af16429b5bc69b7b",
     },
-    body:
-      "orderid=" +
-      Math.floor(Math.random() * (1181788 - 1131788 + 1)) +
-      1131788,
+    body: `orderid=${orderId}`,
   })
     .then((response) => response.text())
     .then((result) => res.send(result))
