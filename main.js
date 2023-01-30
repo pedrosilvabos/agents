@@ -3,10 +3,12 @@ const app = express();
 const fetch = require("node-fetch");
 
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.post("/make-fetch", async (req, res) => {
   const fetch = require("node-fetch");
-  const HttpsProxyAgent = require("https-proxy-agent");
 
   var myHeaders = new Headers();
   myHeaders.append("Host", " api.geodoge.com");
